@@ -15,6 +15,25 @@
 - IAM Role: Assign an EC2 Role with Administrator Access (This would be used to provision the environment granting Jenkins Authorization)
 - Update the security group and open port `8080` to `0.0.0.0/0`
 
+#jenkins installation steps
+#!/bin/bash
+sudo yum update –y
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum upgrade
+sudo amazon-linux-extras install java-openjdk11 -y
+sudo yum install jenkins -y
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+
+# Installing Git
+sudo yum install git -y
+###
+
+# Use The Amazon Linux 2 AMI When Launching The Jenkins VM/EC2 Instance
+# Instance Type: t2.medium or small minimum
+# Open Port (Security Group): 8080 
+
 ## Join the JJTech-Eagles-CI/CD DevOps Workspace Using The Following URL
 - https://join.slack.com/t/newworkspace-mtx6785/shared_invite/zt-1go3k7pz7-uSy3D4ai3Pb7KJk2G1sc1g
 - You can either join though the browser or your local Slack App
